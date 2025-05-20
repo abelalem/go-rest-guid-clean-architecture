@@ -1,11 +1,13 @@
 package interfaces
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/abelalem/go-rest-guid-clean-architecture/pkg/domain/models"
+)
 
 type RecipeService interface {
-	CreateRecipe(c *gin.Context)
-	ListRecipes(c *gin.Context)
-	GetRecipe(c *gin.Context)
-	UpdateRecipe(c *gin.Context)
-	DeleteRecipe(c *gin.Context)
+	CreateRecipe(id string, recipe models.Recipe) error
+	ListRecipes() (map[string]models.Recipe, error)
+	GetRecipe(id string) (models.Recipe, error)
+	UpdateRecipe(id string, recipe models.Recipe) error
+	DeleteRecipe(id string) error
 }
